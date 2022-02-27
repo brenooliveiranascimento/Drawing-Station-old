@@ -9,6 +9,8 @@
 Uma plataforma de curso de desenho realista.
   
 <img src="https://user-images.githubusercontent.com/94801880/155900387-f122e2e4-d18d-45fe-a6e8-c2a19d53db6a.gif" width=600>
+<img src="https://user-images.githubusercontent.com/94801880/155900483-55b28658-6a62-4478-abe5-fd8bd556f082.gif" width=600>
+  
   
  
   ### <h1>Aprendizado<h1>
@@ -23,6 +25,7 @@ Uma plataforma de curso de desenho realista.
 Smartphone Version:
 
 [![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=Android&logoColor=white)](https://github.com/seu-usuario/seu-repositorio/releases)
+  
 
 
 
