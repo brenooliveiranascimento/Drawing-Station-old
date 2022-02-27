@@ -5,6 +5,12 @@ import Home from '../Pages/Home'
 import Profile from "../Pages/Profile";
 import Icon from 'react-native-vector-icons/Feather'
 import DegradeSelect from "../Pages/DegradeSelect";
+import Ball from "../Exercicios/Ball";
+import Petalas from "../Exercicios/Petala";
+import Rosa from "../Exercicios/Rosa";
+import Videoa from "../Components/WebView";
+import Maca from "../Exercicios/Maca";
+import VideoAula from "../Pages/Video";
 
 export default function AppRoutes(){
     const Stack = createNativeStackNavigator();
@@ -27,6 +33,56 @@ export default function AppRoutes(){
             options={{
                 headerShown:false
             }}
+            />
+
+            <Stack.Screen
+            component={Ball}
+            name="Bola"
+            options={{
+                headerShown:false
+            }}
+            />
+
+            <Stack.Screen
+            component={Petalas}
+            name="Pétala"
+            options={{
+                headerShown:false
+            }}
+            />
+
+
+            <Stack.Screen
+            component={Rosa}
+            name="Rosa"
+            options={{
+                headerShown:false
+            }}
+            />
+
+            <Stack.Screen
+            component={Maca}
+            name="Maçã"
+            options={{
+                headerShown:false
+            }}
+            />
+
+            <Stack.Screen
+            component={Videoa}
+            name="WebView"
+            options={{
+                headerTitle:"voltar",
+                headerTintColor:"#fff",
+                headerStyle:{
+                    backgroundColor:"#000"
+                }
+            }}
+            />
+            
+            <Stack.Screen
+            component={VideoAula}
+            name="VideoAula"
             />
 
             </Stack.Navigator>

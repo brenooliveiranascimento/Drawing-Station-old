@@ -51,11 +51,24 @@ export const BtnBlue = styled.TouchableOpacity`
     border-width: 2px;
     border-color: #005780;
     margin: 10px;
-    background-color:${ props => props.value === 'blue' ? '#005780' : '#000'} ;
+    background-color:${ props => props.value === 'blue' ? '#005780' : '#222222'} ;
 `;
 
 export const BtnText = styled.Text`
     color:#fff;
     font-size:17px;
     font-weight:bold;
+`;
+
+export const BtnVideo = styled.TouchableOpacity`
+    width: 80%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: #222222;
+    border-radius: 10px;
+    border-color: #ddd;
+    flex-direction: row;
+    border-width: 1px;
+    margin-top:20px;
 `;

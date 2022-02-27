@@ -1,4 +1,4 @@
-import React, { useState, useContext, useLayoutEffect, useCallback, useEffect } from 'react';
+import React, { useState, useContext, useLayoutEffect, useCallback } from 'react';
 import { View, Text, Image } from 'react-native';
 import { ExerContext } from '../../../Contexts/Api';
 import { BtnCheck, InfArea, Lapis, LapisArea, LapisText, TextBtn } from '../styles';
@@ -7,40 +7,35 @@ import Icon from 'react-native-vector-icons/Feather'
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../../Contexts/index'
 
-export default function verde() {
+export default function Azul({}) {
 
   const { user, updateProgress } = useContext(AuthContext)
-  const [checkVerde, setCheckVerde] = useState(false)
+  const [checkAzul, setCheckAzul] = useState(false)
   const [loadingInf, setLoadingInf] = useState(true);
 
   function update(){
-    if( checkVerde ){
-      updateProgress('degG')
-      setCheckVerde(false)
+    if( checkAzul ){
+      updateProgress('degB')
+      setCheckAzul(false)
       return
     }
-    updateProgress('degG')
-    setCheckVerde(true)
+    updateProgress('degB')
+    setCheckAzul(true)
   }
 
-  const [list, setList] = useState([])
-
-    useEffect(()=>{
+  useLayoutEffect(
+    useCallback(()=>{
       async function loadCheck(){
-        await firestore().collection('degradeVerde').onSnapshot(snapshot=>{
-          setList(snapshot.docs)
-        })
-
-
         await firestore().collection('users').doc(user.uid).get().then(snapshot=>{
-          if(snapshot.data().degG === 1){
-            setCheckVerde(true)      
+          if(snapshot.data().degB === 1){
+            setCheckAzul(true)
           }
           setLoadingInf(false)
         })
       }
       loadCheck()
     },[])
+  )
 
 
   const InfAnimed = Animatable.createAnimatableComponent(InfArea);
@@ -49,13 +44,13 @@ export default function verde() {
   const cores = [
     {cor:'Preto'},
     {cor:'cinza Escuro'},
-    {cor:'Verde'},
-    {cor:'Verde claro'},
+    {cor:'Azul turquesa'},
+    {cor:'Azul real'},
+    {cor:'azul'},
     {cor:'Branco'},
   ]
 
-  const { degradeVerde } = useContext(ExerContext)
-  const contain = degradeVerde
+  const { degradeAzul } = useContext(ExerContext)
 
   if(loadingInf){
     return(<View/>)
@@ -77,7 +72,7 @@ return (
        }
      </LapisAnime>
      {
-       degradeVerde.map( v =>{
+       degradeAzul.map( v =>{
          return(
            <InfAnimed
            key={v.descricao}
@@ -86,7 +81,7 @@ return (
              <Text
               style={{color:"#fff", fontSize:25, fontWeight:'bold', marginBottom:10}}>
              {v.cor}
-              </Text>
+             </Text>
               <Image
               style={{width:250, height:250, borderRadius:10, borderWidth:2, borderColor:'#ddd', marginBottom:20}}
               source={{uri:v.url}}
@@ -111,7 +106,7 @@ return (
         <Icon
         size={30}
         color="#fff"
-        name={ checkVerde ? "check-circle" : "circle" }
+        name={ checkAzul ? "check-circle" : "circle" }
         />
       </BtnCheck>
      </View>

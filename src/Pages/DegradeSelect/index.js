@@ -1,7 +1,7 @@
 import React, { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'react';
 import { ExerContext } from '../../Contexts/Api';
 import { View, Text, ActivityIndicator } from 'react-native';
-import { BtnBlue, BtnGreen, BtnText, Container } from './styles';
+import { BtnBlue, BtnGreen, BtnText, BtnVideo, Container } from './styles';
 import { BtnRed, BtnContain } from './styles'
 import HeaderBack from '../../Components/HeaderBack';
 import Vermelho from '../../Exercicios/Degrade/Vermelho';
@@ -9,82 +9,55 @@ import { AuthContext } from '../../Contexts/index'
 import firestore from '@react-native-firebase/firestore'
 import Icon from 'react-native-vector-icons//Feather';
 import Verde from '../../Exercicios/Degrade/Verde';
+import Azul from '../../Exercicios/Degrade/Azul';
+import { useFocusEffect } from '@react-navigation/native';
+import { TextBtn } from '../../Exercicios/Petala/styles';
+import { useNavigation } from '@react-navigation/native';
 
 export default function DegradeSelect() {
+  const navigation = useNavigation()
   const [showDegrade, setShowDegrade] = useState(null);
   const { degradeVermelho } = useContext(ExerContext);
   const { user } = useContext(AuthContext);
 
   const [redProgress, setRedProgress] = useState(0);
   const [greenProgress, setGreenProgress] = useState(0);
-  const [blueProgress, setBlueProgress] = useState(0);
   const [loadingCheck, setLoadingCheck]  = useState(true);
 
-  function mudarGreenMeno(i){
-    firestore().collection('users').doc(user.uid).get()
-    .then(snapshot=>{
-      setGreenProgress(0);
-      setShowDegrade(i)
-    })
-  }
-
-  function mudarGreenMais(i){
-    firestore().collection('users').doc(user.uid).get()
-    .then(snapshot=>{
-      setGreenProgress(1);
-      setShowDegrade(i)
-    })
-  }
-
-  function mudarRedMenos(i){
-    firestore().collection('users').doc(user.uid).get()
-    .then(snapshot=>{
-      setRedProgress(0);
-      setShowDegrade(i)
-    })
-  }
-
-  function mudarRed(i){
-    firestore().collection('users').doc(user.uid).get()
-    .then(snapshot=>{
-      setRedProgress(1);
-      setShowDegrade(i)
-    })
-  }
-
-
-
-  useLayoutEffect(
-    useCallback(()=>{
+    useEffect(()=>{
       function loadCheck(){
+        setLoadingCheck(true)
         firestore().collection('users').doc(user.uid).get()
         .then(snapshot=>{
+
           setLoadingCheck(false);
-          setRedProgress(snapshot.data().degR);
           setGreenProgress(snapshot.data().degG);
-          setBlueProgress(snapshot.data().degB);
+          setRedProgress(snapshot.data().degR);
         })
       }
       loadCheck()
-    },[])
-  )
+    },[greenProgress, redProgress])
+
+  
 
   function Show(){
     if(showDegrade === 'red'){
       return(
         <Vermelho
-        changePlus={()=>mudarRed(null)}
-        changeMenos={()=>mudarRedMenos(null)}
         />
       )
       }else if(showDegrade === 'green'){
         return(
         <Verde
-        changePlus={()=>mudarGreenMais(null)}
-        changeMenos={()=>mudarGreenMeno(null)}
         />
         )
-    }else{
+    }else if(showDegrade === 'blue'){
+      return(
+        <Azul
+        />
+      )
+    }
+    else{
       return <View/>
     }
   }
@@ -106,19 +79,13 @@ export default function DegradeSelect() {
         value={showDegrade}
         >
           <BtnText>Vermelho</BtnText>
-
           {
-            loadingCheck ? (
-              <ActivityIndicator color={"#fff"} size={20}/>
+            user.degR === 0 ? (
+              <Icon name='circle' size={20} color="#fff"/>
             ) : (
-              <Icon
-              name={redProgress === 0 ? "circle" : "check-circle" }
-              color={'#fff'}
-              size={20}
-              />
+              <Icon name='check-circle' size={20} color="#fff"/>
             )
           }
-          
         </BtnRed>
 
         <BtnGreen
@@ -127,17 +94,12 @@ export default function DegradeSelect() {
         >
           <BtnText>Verde</BtnText>
           {
-            loadingCheck ? (
-              <ActivityIndicator color={"#fff"} size={20}/>
+            user.degG === 0 ? (
+              <Icon name='circle' size={20} color="#fff"/>
             ) : (
-              <Icon
-              name={greenProgress === 0 ? "circle" : "check-circle" }
-              color={'#fff'}
-              size={20}
-              />
+              <Icon name='check-circle' size={20} color="#fff"/>
             )
           }
-          
         </BtnGreen>
 
         <BtnBlue
@@ -146,19 +108,30 @@ export default function DegradeSelect() {
         >
           <BtnText>Azul</BtnText>
           {
-            loadingCheck ? (
-              <ActivityIndicator color={"#fff"} size={20}/>
+            user.degB === 0 ? (
+              <Icon name='circle' size={20} color="#fff"/>
             ) : (
-              <Icon
-              name={blueProgress === 0 ? "circle" : "check-circle" }
-              color={'#fff'}
-              size={20}
-              />
+              <Icon name='check-circle' size={20} color="#fff"/>
             )
           }
-          
         </BtnBlue>
       </BtnContain>
+      <View
+      style={{
+        alignItems:'center'
+      }}
+      >
+        <BtnVideo
+        onPress={()=>navigation.navigate('WebView')}
+        style={{
+          marginTop:40
+        }}
+          >
+          <Icon  style={{marginRight:20}} name='video' size={20} color="#fff"/>
+          <TextBtn>Assistir Aula</TextBtn>
+        </BtnVideo>
+      </View>
+      
 
       <Show/>
 

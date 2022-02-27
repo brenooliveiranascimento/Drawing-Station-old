@@ -131,3 +131,18 @@ background-color:#000;
 border-top-width:1px;
 border-top-color:#663333;
 `;
+
+export const ProgressArea = styled.View`
+width: 100%;
+height: auto;
+padding: 20px;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+`;
+
+export const ProgressText = styled.Text`
+color:#fff;
+font-size:18px;
+font-weight: bold;
+`;

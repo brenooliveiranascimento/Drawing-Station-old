@@ -7,21 +7,18 @@ import Icon from 'react-native-vector-icons/Feather'
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../../Contexts/index'
 
-export default function Vermelho({changePlus, changeMenos}) {
+export default function Vermelho() {
 
   const { user, updateProgress } = useContext(AuthContext)
   const [checkVermelho, setCheckVermelho] = useState(false)
   const [loadingInf, setLoadingInf] = useState(true);
-  const name = 'degR'
 
   function update(){
     if( checkVermelho ){
-      updateProgress('degR', '-')
-      changeMenos()
+      updateProgress('degR')
       return
     }
-    updateProgress('degR', '+')
-    changePlus()
+    updateProgress('degR')
   }
 
   useLayoutEffect(
@@ -80,6 +77,10 @@ return (
            key={v.descricao}
            animation='bounceInUp'
            >
+             <Text
+              style={{color:"#fff", fontSize:25, fontWeight:'bold', marginBottom:10}}>
+             {v.cor}
+              </Text>
               <Image
               style={{width:250, height:250, borderRadius:10, borderWidth:2, borderColor:'#ddd', marginBottom:20}}
               source={{uri:v.url}}
