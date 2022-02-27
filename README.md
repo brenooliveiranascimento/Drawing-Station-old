@@ -16,7 +16,7 @@ Uma plataforma de curso de desenho realista.
   ### <h1>Aprendizado<h1>
   Neste Projeto fui capaz de:
   - Criar um sistema de login e cadastro com Firebase e React Native
-  - Criar um Feed com atualização em tempo real consumindo de um banco de dados
+  - Consumo e atualização de banco de dados
   - criar um sistema de contexto para compartilhar informações em diferentes componentes
   - criar um sistema de persistencia de dados do usuário utilizando Async Storage
   - criar um sistema de upload e consumo de imagens no banco de dados
