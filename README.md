@@ -38,7 +38,7 @@ Smartphone Version:
   ### - PROJETO EM DESENVOLVIMENTO!
   
   ### para rodar em sua maquina:
-  - 1 clone o repositorio: git clone https://github.com/AllBlack-564/dRAWING-STATION.git
+  - 1 clone o repositorio: git clone https://github.com/AllBlack-564/Drawing-Station.git
   - 2 tenha a versão mais recente do Android studio
   - 3 tenha o jdk8 ou jdk11
   - 4 inicie o projeto (de preferencia com o emulador aberto): npx react-native run-androi
