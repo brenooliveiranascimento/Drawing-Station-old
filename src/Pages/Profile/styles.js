@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const FichArea = styled.View`
 	width:350px;
-	height: 300px;
+	height: auto;
 	background-color:rgba(102, 0, 0,0.2);
 	border-width: 1px;
 	border-radius: 7px;
@@ -49,3 +49,12 @@ export const BtnSair = styled.TouchableOpacity`
 	align-items: center;
 	justify-content: center;
 `;
+
+export const Input = styled.TextInput`
+	width: 100%;
+	height: 40px;
+	color: #fff;
+	border-width: 0px;
+	font-size: 18px;
+	margin-top:9px
+`; 

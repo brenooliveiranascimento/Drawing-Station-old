@@ -2,15 +2,21 @@ import React, { useCallback, useLayoutEffect, useContext, useState, useEffect } 
 import { View, Text, Button, ImageBackground, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import firestore from '@react-native-firebase/firestore'
 import { AuthContext } from '../../Contexts/index'
-import { BtnSair, Container, FichArea, ImagePerfil, TextLine, TextLine1 } from './styles';
+import { BtnSair, Container, FichArea, ImagePerfil, Input, TextLine, TextLine1 } from './styles';
 import * as Animetable from 'react-native-animatable';
 import Header from '../../Components/Header'
 import Icon from 'react-native-vector-icons/Feather'
 import ModalFrase from '../../Components/modalFrase';
+import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 
 export default function Profile() {
-
+  const url = {
+    video_url:"https://firebasestorage.googleapis.com/v0/b/drawning-station.appspot.com/o/videoaulas%2FBolinha%20fnal.mp4?alt=media&token=c22805b3-b8b8-484f-9b33-15ac07481a71"
+  }
   const FichaAnimed = Animetable.createAnimatableComponent(FichArea)
+
+  
 
   const { signOut, user } = useContext(AuthContext);
 
@@ -19,6 +25,13 @@ export default function Profile() {
   const [frase, setFrase] = useState('');
   const [ showModal, setShowModal ] = useState(false);
   const [ edit, setEdit ] = useState(false);
+  const [editName, setEditName] = useState(false);
+  const [name, setName] = useState('');
+
+  function changeName(){
+    setName(nowUser)
+    setEditName(true);
+  }
 
   useLayoutEffect(
     useCallback(()=>{
@@ -52,13 +65,26 @@ export default function Profile() {
           <TouchableOpacity>
             <ImagePerfil source={require('../../assets/avatar.png')} />
           </TouchableOpacity>
-
+          {
+            editName ? (
           <TextLine>
-          <Text style={styles.TextBranco}>{nowUser}</Text>
-            <TouchableOpacity>
+          <Input
+          value={name}
+          />
+            <TouchableOpacity onPress={()=>setEditName(false)}>
+              <Icon name='check' color={"#fff"} style={{marginTop:23, marginLeft:-20}} size={20}/>
+            </TouchableOpacity>
+          </TextLine>
+            ) : (
+          <TextLine>
+            <Text style={styles.TextBranco}>{nowUser}</Text>
+            <TouchableOpacity onPress={changeName}>
               <Icon name='edit-2' color={"#fff"} style={{marginTop:23}} size={20}/>
             </TouchableOpacity>
           </TextLine>
+            )
+          }
+          
       
         </View>
 
@@ -82,7 +108,9 @@ export default function Profile() {
               Sair
             </Text>
           </BtnSair>
+
         </View>
+
 
 
         
@@ -124,6 +152,7 @@ export default function Profile() {
           change={editchange}
           />
         </Modal>
+
         
       </FichaAnimed>
      </View>

@@ -10,7 +10,6 @@ import Petalas from "../Exercicios/Petala";
 import Rosa from "../Exercicios/Rosa";
 import Videoa from "../Components/WebView";
 import Maca from "../Exercicios/Maca";
-import VideoAula from "../Pages/Video";
 
 export default function AppRoutes(){
     const Stack = createNativeStackNavigator();
@@ -80,10 +79,6 @@ export default function AppRoutes(){
             }}
             />
             
-            <Stack.Screen
-            component={VideoAula}
-            name="VideoAula"
-            />
 
             </Stack.Navigator>
         )
