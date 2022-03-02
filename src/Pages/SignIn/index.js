@@ -160,6 +160,7 @@ export default function SignIn() {
             onChangeText={(t)=>setPassword(t)}
             value={password}
             placeholder="Senha"
+            secureTextEntry={true}
             />
             
             </View>
@@ -257,6 +258,7 @@ export default function SignIn() {
             <LogInput
             onAnimationEnd={()=>setShowAnimed(false)}
             placeholder="Senha"
+            secureTextEntry={true}
             />
           </AnimedView>
           
@@ -270,6 +272,7 @@ export default function SignIn() {
             onAnimationEnd={()=>setShowAnimed(false)}
             animation='bounceInRight'
             placeholder="Confirmar senha"
+            secureTextEntry={true}
             />
           </AnimedView>
 
@@ -340,6 +343,7 @@ export default function SignIn() {
             onChangeText={(t)=>setPassword(t)}
             value={password}
             placeholder="Senha"
+            secureTextEntry={true}
             />
             </View>
 
@@ -353,6 +357,7 @@ export default function SignIn() {
             onChangeText={(t)=>setConfirmPassWord(t)}
             value={confirmPassword}
             placeholder="Confirmar senha"
+            secureTextEntry={true}
             />
             </View>
             <View style={{flexDirection:'row'}}>

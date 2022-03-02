@@ -12,6 +12,7 @@ export default function Avancado() {
 
   const [data, setData] = useState([
     {name:'Terry Crews', descricao:`Em Breve`, url:'https://firebasestorage.googleapis.com/v0/b/drawning-station.appspot.com/o/capas%2FIMG_20220206_140140_972.jpg?alt=media&token=23432fec-dbc8-462f-8120-e3770f26b908'},
+    {name:'Hulk Buster', descricao:'Em Breve', url:'https://firebasestorage.googleapis.com/v0/b/drawning-station.appspot.com/o/capas%2FIMG_20220206_150724_464%20(1).jpg?alt=media&token=b0241de3-8964-4c31-aa17-10d7855301cc'}
   ])
 
 

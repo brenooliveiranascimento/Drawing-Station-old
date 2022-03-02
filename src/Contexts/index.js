@@ -277,7 +277,8 @@ export default function AuthProvider({children}){
                         apple:snapshot.data().apple,
                         rose:snapshot.data().rose,
                         blueRose:snapshot.data().blueRose,
-                        petal:snapshot.data().petal
+                        petal:snapshot.data().petal,
+                        frase:snapshot.data().frase
                     }
                     setUser(data);
                     setNowUser(data);
@@ -314,7 +315,8 @@ export default function AuthProvider({children}){
                 rose:0,
                 blueRose:0,
                 all:0,
-                petal:0
+                petal:0,
+                frase:''
             }
             await firestore().collection('users').doc(uid).set(data).then(()=>{
                 setUser(data)

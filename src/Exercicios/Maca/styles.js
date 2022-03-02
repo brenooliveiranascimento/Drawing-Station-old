@@ -68,7 +68,7 @@ export const BtnRed = styled.TouchableOpacity`
     border-width: 2px;
     border-color: #660000;
     margin: 10px;
-    background-color:${ props => props.showBola === null ? "#222222" : "#660000" } ;
+    background-color:${ props => props.showRose === false ? "#222222" : "#660000" } ;
 `;
 
 export const BtnVideo = styled.TouchableOpacity`
