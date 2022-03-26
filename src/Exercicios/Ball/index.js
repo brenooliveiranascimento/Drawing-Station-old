@@ -9,9 +9,8 @@ import { ExerContext } from '../../Contexts/Api';
 import HeaderBack from '../../Components/HeaderBack';
 import { BtnVideo } from '../Petala/styles'
 import { useNavigation } from '@react-navigation/native';
-
 export default function Ball() {
-  
+
   const navigation = useNavigation();
   const { user, updateProgress, updateUser } = useContext(AuthContext)
   const [checkBola, setCheckBola] = useState(false)

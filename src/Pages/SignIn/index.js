@@ -1,14 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, ImageBackground, Image, ActivityIndicator } from 'react-native';
-import { Container, Logo, Lapis, Input, BtnLog, BtnReg, TinyInput, Black, Safe, TextBtn, VisitButton, BtnSignIN, BtnText, BtnChange } from './styles';
+import { Container, Logo, Lapis, Input, BtnLog, BtnReg, TinyInput, Black, Safe, TextBtn, VisitButton, BtnSignIN, BtnText, BtnChange, Breno, BrenoBtn } from './styles';
 import * as Animetable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/Feather';
 import { AuthContext } from '../../Contexts';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignIn() {
-
-  
-
+  const navigation = useNavigation()
   const [estado, setEstado] = useState(true);
   const [showAnimed, setShowAnimed] = useState(true);
   const LogInput = Animetable.createAnimatableComponent(Input)
@@ -31,7 +30,7 @@ export default function SignIn() {
     setEmail('');
   }
 
-  const { logar, registrar, loadingBtn } = useContext(AuthContext);
+  const { logar, registrar, loadingBtn, visitUser } = useContext(AuthContext);
 
   function handleLogIn(){
     if(email === '' || password === ''){
@@ -119,14 +118,7 @@ export default function SignIn() {
             </BtnChangeAnimed>
           </View>
 
-          
-          <View style={{flexDirection:'row'}}>
-            <BtnChangeAnimed
-              animation='bounceInLeft'
-              >
-              <BtnText style={{fontWeight:'none'}}>Entrar como visitante</BtnText>
-            </BtnChangeAnimed>
-          </View>
+
           
           
           </View>
@@ -184,19 +176,15 @@ export default function SignIn() {
             </BtnChange>
             </View>
             
-            <View style={{flexDirection:'row'}}>
-            <BtnChange
-            >
-              <BtnText style={{fontWeight:'none'}}>Entrar como visitante</BtnText>
-            </BtnChange>
-            </View>
+ 
             
           </View>
           
         )
       }
-      
-
+      <BrenoBtn
+      onPress={()=>navigation.navigate("Breno")}
+      ><Breno>Desenvolvido com carinho por <Text style={{fontWeight:"bold"}}>@Breno Nascimento</Text></Breno></BrenoBtn>
 
     </Container>
   </ImageBackground>
@@ -386,6 +374,9 @@ export default function SignIn() {
           
         )
       }
+      <BrenoBtn
+      onPress={()=>navigation.navigate("Breno")}
+      ><Breno>Desenvolvido com carinho por <Text style={{fontWeight:"bold"}}>@Breno Nascimento</Text></Breno></BrenoBtn>
     </Container>
   </ImageBackground>
 

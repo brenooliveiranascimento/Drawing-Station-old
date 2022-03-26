@@ -54,3 +54,15 @@ align-items: center;
 justify-content: center;
 margin-top:10px
 `;
+
+export const Breno = styled.Text`
+color:#ddd;
+font-size: 15px;
+
+`;
+
+export const BrenoBtn = styled.TouchableOpacity`
+position:absolute;
+bottom: 15px;
+text-align: center;
+`;

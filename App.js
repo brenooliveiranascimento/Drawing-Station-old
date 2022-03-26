@@ -6,7 +6,7 @@ import AuthProvider from './src/Contexts';
 import ExercicioProvider from './src/Contexts/Api';
 import { createAnimatableComponent } from 'react-native-animatable';
 
-export default function drawingStation() {
+export default function App() {
 
   console.disableYellowBox=true
  return (

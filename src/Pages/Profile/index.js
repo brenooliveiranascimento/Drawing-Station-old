@@ -7,16 +7,10 @@ import * as Animetable from 'react-native-animatable';
 import Header from '../../Components/Header'
 import Icon from 'react-native-vector-icons/Feather'
 import ModalFrase from '../../Components/modalFrase';
-import Video from 'react-native-video';
-import VideoPlayer from 'react-native-video-player';
 
 export default function Profile() {
-  const url = {
-    video_url:"https://firebasestorage.googleapis.com/v0/b/drawning-station.appspot.com/o/videoaulas%2FBolinha%20fnal.mp4?alt=media&token=c22805b3-b8b8-484f-9b33-15ac07481a71"
-  }
-  const FichaAnimed = Animetable.createAnimatableComponent(FichArea)
-
   
+  const FichaAnimed = Animetable.createAnimatableComponent(FichArea);
 
   const { signOut, user } = useContext(AuthContext);
 
@@ -33,8 +27,13 @@ export default function Profile() {
     setEditName(true);
   }
 
+
   useLayoutEffect(
     useCallback(()=>{
+      if(user.name === "visitante"){
+        setName("visitante")
+        return;
+      }
       firestore().collection('users').doc(user.uid).onSnapshot((snapshot)=>{
         setNowUser(snapshot.data().name);
         setProgress(snapshot.data().all);
@@ -52,12 +51,16 @@ export default function Profile() {
     setEdit(false)
   }
 
-
  return (
    <ImageBackground style={{ flex: 1, alignItems:'center'}}
    source={require('../../assets/backgrounddegrade1.png')}
    >
+
      <Header/>
+     <View style={{position:"absolute"}}>
+  
+     </View>
+
      <View style={{ padding:20, borderTopColor:'#660000', borderTopWidth:1  }} >
       <FichaAnimed animation="fadeIn">
         <View style={styles.InfContain}>

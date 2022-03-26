@@ -83,7 +83,7 @@ export default function Maca(){
                     }
                 </BtnRed>
                 <BtnVideo
-                onPress={()=>navigation.navigate('WebView')}
+                onPress={()=>alert('Aula disponivel em breve!')}
                 >
                     <Icon  style={{marginRight:20}} name='video' size={20} color="#fff"/>
                     <TextBtn>Assistir Aula</TextBtn>

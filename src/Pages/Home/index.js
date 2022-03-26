@@ -10,14 +10,13 @@ import Icon from 'react-native-vector-icons/Feather'
 import Msg from '../../Components/Msg';
 import firestore from '@react-native-firebase/firestore'
 import { ExerContext } from '../../Contexts/Api';
+import { useEffect } from 'react/cjs/react.production.min';
 
 export default function Home() {
 
   const { signOut, user, all, basic, changeProgress } = useContext(AuthContext);
   const { handleBD } = useContext(ExerContext)
 
-
- 
 
   function Screen(){
    if(estado === 'basicos'){

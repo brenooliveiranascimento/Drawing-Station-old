@@ -15,6 +15,32 @@ export default function AuthProvider({children}){
         setVideoUrl(data);
     }
 
+    function visitUser(){
+        let visitante = {
+            email:"Visit@@gmail.com",
+                name:"visitante",
+                uid:"dfiowadoiwa",
+                licenca:null,
+                inter:0,
+                avan:0,
+                Basic:0,
+                degA:0,
+                degR:0,
+                degG:0,
+                degB:0,
+                ball:0,
+                apple:0,
+                rose:0,
+                blueRose:0,
+                all:0,
+                petal:0,
+                frase:''
+        }
+
+        setUser(visitante)
+        setNowUser(visitante)
+    }
+
 
     async function changeProgress(){
         await firestore().collection('users').doc(user.uid).get()
@@ -364,7 +390,8 @@ export default function AuthProvider({children}){
         changeProgress,
         updateUser,
         updateUrl,
-        videoUrl
+        videoUrl,
+        visitUser
     }}
     >
         {children}
